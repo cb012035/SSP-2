@@ -26,56 +26,60 @@
                         </div>
                     @endif
 
-                    <table class="min-w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-50 dark:bg-gray-700">
-                            <tr>
-                                <th
-                                    class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
-                                    Name</th>
-                                <th
-                                    class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
-                                    Description</th>
-                                <th
-                                    class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
-                                    Quantity</th>
-                                <th
-                                    class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
-                                    Purchase Date</th>
-                                <th
-                                    class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
-                                    Status</th>
-                                <th
-                                    class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
-                                    Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-gray-200 bg-white dark:bg-gray-800">
-                            @foreach ($equipment as $item)
+                    <!-- Add scroll container to handle overflow -->
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50 dark:bg-gray-700">
                                 <tr>
-                                    <td class="whitespace-nowrap px-6 py-4">{{ $item->name }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4">{{ $item->description }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4">{{ $item->quantity }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4">{{ $item->purchase_date }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4">{{ $item->status }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4">
-                                        <a href="{{ route('admin.equipment.edit', $item) }}"
-                                            class="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white transition duration-150 ease-in-out hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 active:bg-indigo-700 dark:focus:ring-offset-gray-800">
-                                            {{ __('Edit') }}
-                                        </a>
-                                        <form action="{{ route('admin.equipment.destroy', $item) }}" method="POST"
-                                            class="inline-block">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit"
-                                                class="inline-flex items-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white transition duration-150 ease-in-out hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 active:bg-red-700 dark:focus:ring-offset-gray-800">
-                                                {{ __('Delete') }}
-                                            </button>
-                                        </form>
-                                    </td>
+                                    <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                                        Name
+                                    </th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                                        Description
+                                    </th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                                        Quantity
+                                    </th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                                        Purchase Date
+                                    </th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                                        Status
+                                    </th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                                        Actions
+                                    </th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 bg-white dark:bg-gray-800">
+                                @foreach ($equipment as $item)
+                                    <tr>
+                                        <td class="whitespace-nowrap px-6 py-4">{{ $item->name }}</td>
+                                        <td class="whitespace-nowrap px-6 py-4">{{ $item->description }}</td>
+                                        <td class="whitespace-nowrap px-6 py-4">{{ $item->quantity }}</td>
+                                        <td class="whitespace-nowrap px-6 py-4">{{ $item->purchase_date }}</td>
+                                        <td class="whitespace-nowrap px-6 py-4">{{ $item->status }}</td>
+                                        <td class="whitespace-nowrap px-6 py-4">
+                                            <a href="{{ route('admin.equipment.edit', $item) }}"
+                                                class="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white transition duration-150 ease-in-out hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 active:bg-indigo-700 dark:focus:ring-offset-gray-800">
+                                                {{ __('Edit') }}
+                                            </a>
+                                            <form action="{{ route('admin.equipment.destroy', $item) }}" method="POST"
+                                                class="inline-block">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit"
+                                                    class="inline-flex items-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white transition duration-150 ease-in-out hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 active:bg-red-700 dark:focus:ring-offset-gray-800">
+                                                    {{ __('Delete') }}
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- End of scroll container -->
                 </div>
             </div>
         </div>
